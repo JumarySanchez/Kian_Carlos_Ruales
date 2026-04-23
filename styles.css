@@ -11,15 +11,15 @@
 }
 
 :root[data-theme="light"] {
-  --bg: #f6fbff;
-  --surface: rgba(255, 255, 255, 0.78);
-  --surface-2: #ffffff;
-  --text: #102132;
-  --muted: #506579;
-  --accent: #0f8a7f;
+  --bg: #f8f2e6;
+  --surface: rgba(255, 251, 243, 0.84);
+  --surface-2: #fff7ea;
+  --text: #2b2218;
+  --muted: #6f604f;
+  --accent: #197f74;
   --accent-2: #2f6bff;
-  --border: rgba(49, 102, 140, 0.2);
-  --shadow: 0 24px 80px rgba(114, 146, 170, 0.24);
+  --border: rgba(141, 116, 79, 0.22);
+  --shadow: 0 24px 80px rgba(137, 110, 74, 0.2);
 }
 
 * {
@@ -240,6 +240,75 @@ h2 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.featured-wrap {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 18px;
+}
+
+.feature-list {
+  display: grid;
+  gap: 10px;
+}
+
+.feature-item {
+  width: 100%;
+  text-align: left;
+  background: color-mix(in srgb, var(--surface) 84%, transparent);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: grid;
+  gap: 4px;
+  cursor: pointer;
+  transition: transform 200ms ease, border-color 200ms ease, background 200ms ease;
+}
+
+.feature-item span {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.feature-item strong {
+  font-family: "Sora", sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.feature-item:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--accent) 56%, var(--border));
+}
+
+.feature-item.is-active {
+  background: linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--accent) 20%, transparent),
+      color-mix(in srgb, var(--accent-2) 18%, transparent)
+    ),
+    color-mix(in srgb, var(--surface) 88%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 62%, var(--border));
+}
+
+.feature-panel {
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+
+.feature-panel h3 {
+  margin-bottom: 12px;
+}
+
+.feature-panel p {
+  color: var(--muted);
+  max-width: 58ch;
+}
+
 .card,
 .edu-card,
 .timeline-item {
@@ -385,6 +454,7 @@ h2 {
 .sparkles {
   opacity: 0;
   transition: opacity 260ms ease;
+  mix-blend-mode: screen;
 }
 
 :root[data-theme="dark"] .sparkles {
@@ -393,42 +463,100 @@ h2 {
 
 .sparkles-a {
   background-image:
-    radial-gradient(1.1px 1.1px at 16% 24%, rgba(255, 255, 255, 0.72), transparent),
-    radial-gradient(1px 1px at 44% 14%, rgba(212, 238, 255, 0.6), transparent),
-    radial-gradient(1.1px 1.1px at 72% 36%, rgba(189, 245, 235, 0.62), transparent),
-    radial-gradient(1px 1px at 86% 18%, rgba(255, 255, 255, 0.52), transparent),
-    radial-gradient(1.2px 1.2px at 22% 72%, rgba(194, 224, 255, 0.56), transparent),
-    radial-gradient(1px 1px at 58% 64%, rgba(255, 255, 255, 0.62), transparent),
-    radial-gradient(1px 1px at 80% 78%, rgba(188, 244, 232, 0.58), transparent);
-  animation: twinkle 5.4s ease-in-out infinite alternate;
+    radial-gradient(1.45px 1.45px at 16% 24%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(1.15px 1.15px at 44% 14%, rgba(212, 238, 255, 0.82), transparent),
+    radial-gradient(1.35px 1.35px at 72% 36%, rgba(189, 245, 235, 0.84), transparent),
+    radial-gradient(1.1px 1.1px at 86% 18%, rgba(255, 255, 255, 0.78), transparent),
+    radial-gradient(1.4px 1.4px at 22% 72%, rgba(194, 224, 255, 0.82), transparent),
+    radial-gradient(1.2px 1.2px at 58% 64%, rgba(255, 255, 255, 0.86), transparent),
+    radial-gradient(1.1px 1.1px at 80% 78%, rgba(188, 244, 232, 0.82), transparent);
+  background-size: 100% 100%;
+  animation: twinkle 5.4s ease-in-out infinite alternate, driftA 24s linear infinite;
 }
 
 .sparkles-b {
   background-image:
-    radial-gradient(1px 1px at 10% 44%, rgba(255, 255, 255, 0.48), transparent),
-    radial-gradient(1.2px 1.2px at 34% 54%, rgba(184, 239, 228, 0.52), transparent),
-    radial-gradient(1px 1px at 51% 26%, rgba(215, 236, 255, 0.52), transparent),
-    radial-gradient(1.1px 1.1px at 67% 58%, rgba(255, 255, 255, 0.55), transparent),
-    radial-gradient(1px 1px at 90% 40%, rgba(190, 224, 255, 0.5), transparent),
-    radial-gradient(1px 1px at 42% 82%, rgba(255, 255, 255, 0.55), transparent),
-    radial-gradient(1px 1px at 73% 90%, rgba(194, 244, 233, 0.5), transparent);
-  animation: twinkle 6.2s ease-in-out infinite alternate-reverse;
+    radial-gradient(1.1px 1.1px at 10% 44%, rgba(255, 255, 255, 0.76), transparent),
+    radial-gradient(1.3px 1.3px at 34% 54%, rgba(184, 239, 228, 0.72), transparent),
+    radial-gradient(1.05px 1.05px at 51% 26%, rgba(215, 236, 255, 0.76), transparent),
+    radial-gradient(1.2px 1.2px at 67% 58%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1.05px 1.05px at 90% 40%, rgba(190, 224, 255, 0.72), transparent),
+    radial-gradient(1.1px 1.1px at 42% 82%, rgba(255, 255, 255, 0.78), transparent),
+    radial-gradient(1.05px 1.05px at 73% 90%, rgba(194, 244, 233, 0.72), transparent);
+  background-size: 100% 100%;
+  animation: twinkle 6.2s ease-in-out infinite alternate-reverse, driftB 30s linear infinite;
+}
+
+:root[data-theme="dark"] .sparkles-a,
+:root[data-theme="dark"] .sparkles-b {
+  filter: drop-shadow(0 0 3px rgba(173, 222, 255, 0.22));
+}
+
+.sparkles::before,
+.sparkles::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+.sparkles-a::before {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.58) 0.7px, transparent 0.9px);
+  background-size: 30px 30px;
+  opacity: 0.34;
+}
+
+.sparkles-a::after {
+  background-image: radial-gradient(circle, rgba(174, 223, 255, 0.58) 0.62px, transparent 0.8px);
+  background-size: 52px 52px;
+  opacity: 0.24;
+}
+
+.sparkles-b::before {
+  background-image: radial-gradient(circle, rgba(198, 247, 235, 0.52) 0.58px, transparent 0.76px);
+  background-size: 40px 40px;
+  opacity: 0.25;
+}
+
+.sparkles-b::after {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0.58px, transparent 0.76px);
+  background-size: 68px 68px;
+  opacity: 0.2;
 }
 
 @keyframes twinkle {
   0% {
-    opacity: 0.18;
+    opacity: 0.3;
     transform: translateY(0px);
   }
   35% {
-    opacity: 0.38;
+    opacity: 0.62;
   }
   65% {
-    opacity: 0.2;
+    opacity: 0.34;
   }
   100% {
-    opacity: 0.42;
+    opacity: 0.72;
     transform: translateY(-3px);
+  }
+}
+
+@keyframes driftA {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-10px, -14px, 0);
+  }
+}
+
+@keyframes driftB {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(9px, -12px, 0);
   }
 }
 
@@ -443,20 +571,23 @@ h2 {
 
 .light-wave-a {
   background:
-    radial-gradient(70% 46% at 84% 10%, rgba(67, 138, 255, 0.18), transparent 74%),
-    radial-gradient(56% 40% at 16% 86%, rgba(16, 138, 126, 0.16), transparent 76%);
+    radial-gradient(72% 48% at 84% 10%, rgba(255, 173, 86, 0.2), transparent 74%),
+    radial-gradient(58% 42% at 16% 86%, rgba(29, 126, 113, 0.16), transparent 76%),
+    radial-gradient(42% 34% at 52% 18%, rgba(255, 220, 153, 0.2), transparent 72%);
+  animation: creamFlow 20s ease-in-out infinite alternate;
 }
 
 .light-wave-b {
   background:
     repeating-linear-gradient(
       -35deg,
-      rgba(24, 113, 145, 0.045) 0,
-      rgba(24, 113, 145, 0.045) 1px,
+      rgba(145, 113, 62, 0.048) 0,
+      rgba(145, 113, 62, 0.048) 1px,
       transparent 1px,
       transparent 24px
     );
   mask-image: radial-gradient(circle at 30% 40%, rgba(0, 0, 0, 0.82), transparent 66%);
+  animation: creamFlowReverse 24s ease-in-out infinite alternate;
 }
 
 /* Add decorative topographic lines in light mode for a distinct background design. */
@@ -476,11 +607,11 @@ h2 {
   right: -200px;
   background:
     repeating-radial-gradient(circle at center,
-      rgba(31, 130, 111, 0.12) 0,
-      rgba(31, 130, 111, 0.12) 2px,
+      rgba(170, 122, 57, 0.12) 0,
+      rgba(170, 122, 57, 0.12) 2px,
       transparent 2px,
       transparent 16px);
-  opacity: 0.75;
+  opacity: 0.66;
 }
 
 :root[data-theme="light"] body::after {
@@ -490,11 +621,33 @@ h2 {
   bottom: -220px;
   background:
     repeating-radial-gradient(circle at center,
-      rgba(47, 107, 255, 0.11) 0,
-      rgba(47, 107, 255, 0.11) 2px,
+      rgba(35, 124, 115, 0.11) 0,
+      rgba(35, 124, 115, 0.11) 2px,
       transparent 2px,
       transparent 14px);
-  opacity: 0.78;
+  opacity: 0.72;
+}
+
+@keyframes creamFlow {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: saturate(1);
+  }
+  100% {
+    transform: translate3d(-8px, 10px, 0) scale(1.02);
+    filter: saturate(1.08);
+  }
+}
+
+@keyframes creamFlowReverse {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(9px, -8px, 0);
+    opacity: 0.88;
+  }
 }
 
 .reveal {
@@ -514,6 +667,10 @@ h2 {
 @media (max-width: 1024px) {
   .cards.four {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .featured-wrap {
+    grid-template-columns: 1fr;
   }
 
   .hero {

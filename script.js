@@ -25,3 +25,20 @@ const revealItems = document.querySelectorAll(".reveal");
 revealItems.forEach((item, idx) => {
   item.style.setProperty("--delay", `${idx * 80}ms`);
 });
+
+const featureItems = document.querySelectorAll(".feature-item");
+const featureMeta = document.getElementById("featureMeta");
+const featureTitle = document.getElementById("featureTitle");
+const featureBody = document.getElementById("featureBody");
+
+if (featureItems.length && featureMeta && featureTitle && featureBody) {
+  featureItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      featureItems.forEach((node) => node.classList.remove("is-active"));
+      item.classList.add("is-active");
+      featureMeta.textContent = item.dataset.meta || "";
+      featureTitle.textContent = item.dataset.title || "";
+      featureBody.textContent = item.dataset.body || "";
+    });
+  });
+}
